@@ -81,6 +81,10 @@
 \usepackage{listings}
 \usepackage{color}
 
+\usepackage{minted}
+%\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
 \definecolor{darkgray}{gray}{0.1}
 \definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
 \definecolor{mauve}{rgb}{0.48,0,0.72}
@@ -148,15 +152,16 @@ The latest stable version is 1.16.
 \end{frame}
 
 \begin{frame}
-\frametitle{Installation}
-\begin{enumerate}
- \item svn co https://projects.coin-or.org/svn/Clp/stable/1.16 coin-Clp
- \item cd coin-Clp
- \item ./configure -C
- \item make 
- \item make test
- \item make install
-\end{enumerate}
+	\frametitle{Installation}
+	\begin{enumerate}
+		\item svn co https://projects.coin-or.org/svn/Clp/stable/1.16 coin-Clp
+	 	\item cd coin-Clp
+	 	\item ./configure -C
+	 	\item make 
+	 	\item make test
+	 	\item make install
+	 	\item make doxydoc
+	\end{enumerate}
 \end{frame}
 
 %------------------------------------------------
@@ -164,24 +169,27 @@ The latest stable version is 1.16.
 \subsection{Overeview}
 
 \begin{frame}
- \frametitle{Basic model classes}
- The top three levels of the hierarchy are depicted in the figure below. The first two levels (i.e. ClpModel, ClpSimplex, ClpInterior) contain all the problem data which define a model (that is, a problem instance). The third level contains most of the algorithmic aspects of CLP.
- \begin{figure}
-  \includegraphics[width=0.8\linewidth]{clpbasicmodelhier}
- \end{figure}
+ 	\frametitle{Basic model classes}
+  The top three levels of the hierarchy are depicted in the figure below. The first two levels (i.e. ClpModel, ClpSimplex, ClpInterior) contain all the problem data which define a model (that is, a problem instance). The third level contains most of the algorithmic aspects of CLP.
+  \begin{figure}
+  	\includegraphics[width=0.8\linewidth]{clpbasicmodelhier}
+  \end{figure}
 \end{frame}
 
 %------------------------------------------------
 
 \subsection{Usage}
-
+{
+\setbeamercolor{background canvas}{bg=darkgray}
 \begin{frame}[fragile]
-\lstinputlisting{examples/simplex_minimum.cpp}
+	\usemintedstyle{monokai}
+	\inputminted{cpp}{examples/simplex_minimum.cpp}
 \end{frame}
+}
 
 \begin{frame}[fragile]
- \frametitle{MPS format}
- \begin{lstlisting}[basicstyle=\tiny]
+  \frametitle{MPS format}
+  \begin{lstlisting}[basicstyle=\tiny]
   NAME          DOVETAIL  
 ROWS
  N  obj
