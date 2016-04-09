@@ -145,28 +145,29 @@ University of Patras \\ % Your institution for the title page
 
 \subsection{Installation} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
 
-\begin{frame}
-\frametitle{Background}
-Clp is written in C++ and is released as open source code under the ​Eclipse Public License (EPL). It is available from the ​COIN-OR initiative. The code is written primarily by John J. Forrest, now retired from IBM Research. The project is currently managed by John Forrest, ​Julian Hall, and the rest of the ​Clp team. \\*
-The latest stable version is 1.16.
-\end{frame}
 
 \begin{frame}
-	\frametitle{Installation}
-	\begin{enumerate}
-		\item svn co https://projects.coin-or.org/svn/Clp/stable/1.16 coin-Clp
-	 	\item cd coin-Clp
-	 	\item ./configure -C
-	 	\item make 
-	 	\item make test
-	 	\item make install
-	 	\item make doxydoc
-	\end{enumerate}
+  \frametitle{Installation}
+  \begin{enumerate}
+    \item svn co https://projects.coin-or.org/svn/Clp/stable/1.16 coin-Clp
+    \item cd coin-Clp
+    \item ./configure -C
+    \item make 
+    \item make test
+    \item make install
+    \item make doxydoc
+  \end{enumerate}
 \end{frame}
 
 %------------------------------------------------
 
 \subsection{Overeview}
+
+\begin{frame}
+\frametitle{Background}
+Clp is written in C++ and is released as open source code under the ​Eclipse Public License (EPL). It is available from the ​COIN-OR initiative. The code is written primarily by John J. Forrest, now retired from IBM Research. The project is currently managed by John Forrest, ​Julian Hall, and the rest of the ​Clp team. \\*
+The latest stable version is 1.16.
+\end{frame}
 
 \begin{frame}
  	\frametitle{Basic model classes}
@@ -176,16 +177,37 @@ The latest stable version is 1.16.
   \end{figure}
 \end{frame}
 
-%------------------------------------------------
-
-\subsection{Usage}
-{
-\setbeamercolor{background canvas}{bg=darkgray}
 \begin{frame}[fragile]
-	\usemintedstyle{monokai}
-	\inputminted{cpp}{examples/simplex_minimum.cpp}
+  \frametitle{Load model}
+  \begin{itemize}
+    \item Load from matrix
+  \end{itemize}
+  \begin{minted}[fontsize=\scriptsize]{cpp}
+  void ClpModel::loadProblem (const ClpMatrixBase &matrix, 
+                              const double *collb, 
+                              const double *colub, 
+                              const double *obj, 
+                              const double *rowlb, 
+                              const double *rowub, 
+                              const double *rowObjective = NULL)
+  \end{minted}
+  \begin{itemize}
+    \item{\footnotesize} Load from MPS file
+  \end{itemize}
+  \begin{minted}[fontsize=\scriptsize]{cpp}
+  int ClpModel::readMps (const char *filename, 
+                         bool keepNames = false, 
+                         bool ignoreErrors = false)   
+  \end{minted}
+  \begin{itemize}
+    \item Load from GMPL file
+  \end{itemize}
+  \begin{minted}[fontsize=\scriptsize]{cpp}
+  int ClpModel::readGMPL (const char *filename, 
+                          const char *dataName, 
+                          bool keepNames = false)     
+  \end{minted}
 \end{frame}
-}
 
 \begin{frame}[fragile]
   \frametitle{MPS format}
@@ -213,6 +235,17 @@ BOUNDS
 ENDATA
  \end{lstlisting}
 \end{frame}
+
+%------------------------------------------------
+
+\subsection{Usage}
+{
+\setbeamercolor{background canvas}{bg=darkgray}
+\begin{frame}[fragile]
+	\usemintedstyle{monokai}
+	\inputminted{cpp}{examples/simplex_minimum.cpp}
+\end{frame}
+}
 
 \newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
 \newcommand{\tab}[1]{\hspace{.15\textwidth}\rlap{#1}}
@@ -249,6 +282,21 @@ ENDATA
  \end{block}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Pivot choices}
+  \begin{itemize}
+  \item ClpPrimalColumnPivot
+    \begin{itemize}
+    \item ClpPrimalColumnSteepest
+    \item ClpPrimalColumnDantzig
+    \end{itemize}
+  \item ClpDualRowSteepest
+    \begin{itemize}
+    \item ClpDualRowDantzig
+    \item ClpDualRowPivot
+    \end{itemize}
+  \end{itemize}
+\end{frame}
 %------------------------------------------------
 
 \subsection{Basic examples}
