@@ -155,7 +155,7 @@ University of Patras \\ % Your institution for the title page
     \item make 
     \item make test
     \item make install
-    \item make doxydoc
+    \item make doxydoc (documentation)
   \end{enumerate}
 \end{frame}
 
@@ -282,27 +282,52 @@ ENDATA
  \end{block}
 \end{frame}
 
+{\Large
 \begin{frame}
   \frametitle{Pivot choices}
   \begin{itemize}
   \item ClpPrimalColumnPivot
+    {\Large
     \begin{itemize}
     \item ClpPrimalColumnSteepest
     \item ClpPrimalColumnDantzig
     \end{itemize}
+    }
   \item ClpDualRowSteepest
+    {\Large
     \begin{itemize}
     \item ClpDualRowDantzig
     \item ClpDualRowPivot
     \end{itemize}
+    }
   \end{itemize}
 \end{frame}
+}
 %------------------------------------------------
 
-\subsection{Basic examples}
+\subsection{Executable}
 
 \begin{frame}
-\frametitle{Bullet Points}
+\frametitle{Quick start}
+\begin{itemize}
+\item Commands
+\begin{itemize}
+\item import (filename)
+\item primals
+\item duals
+\item max
+\item min
+\item maxIt (num)
+\item presolve (on/off)
+\item allslack
+\item solution (filename)
+\item quit
+\end{itemize}
+\end{itemize}
+\begin{itemize}
+\item Example :
+\end{itemize}
+clp filename -maximize -dualsimplex -solution solfile
 \end{frame}
 
 %------------------------------------------------
