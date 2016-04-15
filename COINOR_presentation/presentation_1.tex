@@ -282,6 +282,29 @@ ENDATA
  \end{block}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Model modification}
+  \begin{itemize}
+  \item void setRowSetBounds(indexFirst,
+                             indexLast,
+                             boundList);
+  \item void setColumnSetBounds(indexFirst,
+                                indexLast,
+                                boundList);
+  \item void setObjectiveCoefficient(elementIndex, elementValue);
+  \item void resize(newNumberRows, newNumberColumns);
+  \item void addRows(number, rowLower,
+                     rowUpper,
+                     rowStarts, columns,
+                     elements);
+  \item void addColumns(number, columnLower,
+                        columnUpper,
+                        objective,
+                        columnStarts, rows,
+                        elements);                                            
+  \end{itemize}
+\end{frame}
+
 {\Large
 \begin{frame}
   \frametitle{Pivot choices}
@@ -296,7 +319,7 @@ ENDATA
   \item ClpDualRowSteepest
     {\Large
     \begin{itemize}
-    \item ClpDualRowSteepest
+    \item ClpDualRowStee  pest
     \item ClpDualRowDantzig
     \end{itemize}
     }
