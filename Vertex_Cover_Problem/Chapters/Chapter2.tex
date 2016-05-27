@@ -1,0 +1,75 @@
+% Chapter Template
+
+\chapter{Vertex cover problem} % Main chapter title
+
+\label{Chapter2} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+
+To vertex cover ενός γράφου είναι ένα σύνολο κόμβων τέτοιο ώστε κάθε ακμή του γράφου είναι προσκύμενη σε τουλάχιστον ένα κομβό του συνόλου αυτού. Το πρόβλημα εύρεσης του ελάχιστου vertex cover είναι κλασσικό προβλημα στον τομέα της συνδιαστικής βελτιστοποίησης και της θεωρίας υπολογιστών και κλασσικό παράδειγμα NP-hard προβλήματος βελτιστοποίησης. 
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+
+\section{Διατύπωση}
+Το vertex cover $V'$ ενός μη κατευθυντικού γράφου $G=(V,E)$ ειναι ένα υποσύνολο του $V$ τέτοιο ώστε:
+$$\forall uv \in{E} \Rightarrow u \in{V'} \lor v \in{V'}$$
+Ένα τέτοι σύνολο λέμε οτί καλύπτει τις ακμές του $G$. Το ελάχιστο vertex cover ενός γράφου $G$ είναι το σύνολο $V'$ με τον μικρότερο αριθμό στοιχείων.
+
+
+\begin{figure}[h]
+\caption{Vertex cover}
+\centering
+\includegraphics{Figures/vert_cover.png}\centering
+\end{figure}
+
+\begin{figure}[h]
+\caption{Minimum vertex cover}
+\centering
+\includegraphics{Figures/min_vert_cover.png}\centering
+\end{figure}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 2
+%----------------------------------------------------------------------------------------
+
+\section{NP-completness}
+
+\section{Λύσεις}
+
+\subsection{Πρόβλημα ακέραιου προγραμματισμού}
+
+Το minimum vertex cover problem μπορεί να διατυπωθεί ως το ακόλουθο πρόβλημα ακέραιου προγραμματισμού
+
+$c : S \rightarrow {\boldsymbol{Q}^+}$
+
+$$min\{\displaystyle\sum_{u\in{V}} c(v)x_v\}$$ 
+\centerline{subject to}
+$$x_u + x_v \geq{1}, \quad \forall (u, v) \in{E}$$
+$$ x_S \in{\{0, 1\}}$$
+
+Επειδή το πρόβλημα ακέραιου προγραμματισμού είναι NP-hard χαλαρώνουμε τους περιορισμούς του προβλήματος για το $x_v$ και το ανάγουμε σε πρόβλημα γραμμικού περιορισμού το οποίο λύνεται σε πολυωνυμικό χρόνο. Έτσι καταλήγουμε στο πρόβλημα:
+
+$$min\{\displaystyle\sum_{S\in{\mathcal{S}}} x_S\}$$ 
+\centerline{subject to}
+$$\displaystyle\sum_{S:e\in{\mathcal{S}}} x_S \geq{1}, \quad \forall e \in{\mathcal{U}}$$
+$$ x_v \geq 0, \quad v \in{V}$$
+
+Επειδή το integrality gap αυτού του προβλήματος είναι το πολύ $\log{n}$ η χαλάρωση του δίνει factor-$\log{n}$ προσεγγιστικό αλγόριθμο.
+\\
+Αν κάθε στοιχείο εμφανίζεται το πολύ σε ${\mathcal{F}}$ τότε μπορεί να βρεθεί λύση σε πολυωνυμικό χρόνο η οποία προσεγγίζει το βέλτιστο με παράγοντα ${\mathcal{F}}$ χρησιμοποιόντας το πρόβλημα γραμμικού προγραμματισμού.
+
+\subsection{Άπληστος αλγόριθμος} 
+
+Αλγόριθμος:
+\begin{enumerate}
+\item $ C \leftarrow 0$
+\item While $ C \neq {\mathcal{U}} $ do
+\begin{enumerate}
+\item Find the set whose cost effectiveness is smallest, say $S_i$. \\
+			Let $a = \frac{c(S_i)}{|S_i-C|}$. \\
+			Pick $S_i$ and $\forall e \in{S_i - C}$, set $price(e) = a$.
+\item $C \leftarrow S_i \cup C$
+\end{enumerate}
+\item Output $C$
+\end{enumerate}
+
+\section{Εφαρμογές}
