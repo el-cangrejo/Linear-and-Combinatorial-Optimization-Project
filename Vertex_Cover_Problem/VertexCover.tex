@@ -2,6 +2,7 @@
 11pt, % The default document font size, options: 10pt, 11pt, 12pt
 oneside, % Two side (alternating margins) for binding by default, uncomment to switch to one side
 %chapterinoneline,% Have the chapter title next to the number in one single line
+greek,
 english, % ngerman for German
 singlespacing, % Single line spacing, alternatives: onehalfspacing or doublespacing
 %draft, % Uncomment to enable draft mode (no pictures, no links, overfull hboxes indicated)
@@ -26,12 +27,11 @@ headsepline, % Uncomment to get a line under the header
 
 \usepackage[cm-default]{fontspec}
 \usepackage{enumerate}
-
 \setromanfont{FreeSerif}
 \setsansfont{FreeSans}
 \setmonofont{FreeMono}
 
-\usepackage{xltxtra} 
+%\usepackage{xltxtra} 
 \usepackage{xgreek} 
 
 \usepackage{amsmath}
@@ -39,6 +39,10 @@ headsepline, % Uncomment to get a line under the header
 \usepackage{ragged2e}
 
 \usepackage{float}
+
+%\usepackage[utf8x]{inputenc}
+\usepackage{babel}
+
 %----------------------------------------------------------------------------------------
 %	MARGIN SETTINGS
 %----------------------------------------------------------------------------------------
@@ -90,13 +94,17 @@ headsepline, % Uncomment to get a line under the header
 {\huge \bfseries \ttitle\par}\vspace{0.4cm} % Thesis title
 \HRule \\[1.5cm] % Horizontal line
  
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\textwidth]{Figures/vertexcover.png}
+\end{figure}
+
+\vfill
 \begin{minipage}[t]{0.7\textwidth}
 \begin{flushleft} \large
 \centerline{\authorname}% Author name - remove the \href bracket to remove the link
 \end{flushleft}
-\end{minipage}\\[3cm]
-
-\vfill
+\end{minipage}
 
 {\large \today}\vspace{-10mm} % Date
 %\includegraphics{Logo} % University/department logo - uncomment to place it
