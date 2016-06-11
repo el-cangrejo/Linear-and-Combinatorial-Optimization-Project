@@ -45,7 +45,9 @@ $\tau(G) := $ minimum size of a vertex cover in G.
 \subsection{Συμπεράσματα}
 
 Οπότε χρησιμοποιώντας τον αλγόριθμο Hopcroft-Karp, ο οποίος βρίσκει ένα μέγιστο ταίριασμα σε ένα διμερή γράφο σε χρόνο $O(|E| \sqrt{|V|})$, μπορούμε έπειτα να υπολογίσουμε το σύνολο $V'$ αποδοτικά.
-
+Επίσης για όλους τους γράφους ισχύει 
+$$ \max_{\text{matching M}} |M| \leq  \min_{\text{vertex cover U}} |U| \leq 2 \cdot \Big( \max_{\text{mathing M}} |M|\Big)$$
+ % \leq  \min_{vertex cover U} |U| \leq 2 \mul \big( \max_{mathing M} |M|\big)$$
 \begin{figure}[H]
 \caption{Maximum matching - minimum vertex cover example}
 \centering
@@ -63,6 +65,13 @@ $\tau(G) := $ minimum size of a vertex cover in G.
 
 \subsection{Αλγόριθμος}
 Η βασική ιδέα του αλγορίθμου είναι η εξής: χρησιμοποιώντας την αναζήτηση πρώτα σε βάθος βρίσκουμε όλα τα φύλλα του δένδρου και έπειτα για κάθε φύλλο επιλέγουμε τον πατέρα του και για κάθε επιλέγουμε κάθε εσωτερικό κόμβο που τα παιδιά του δεν έχουν επιλεχθεί μέχρι να μην υπάρχουν άλλοι κόμβοι να επιλεχθούν.
+
+\begin{figure}[H]
+\caption{Vertex cover in tree example}
+\centering
+\includegraphics[width=0.5\textwidth]{Figures/vc_tree.png}\centering
+\end{figure}
+
 %----------------------------------------------------------------------------------------
 %	SECTION 3
 %----------------------------------------------------------------------------------------
@@ -79,8 +88,19 @@ $\tau(G) := $ minimum size of a vertex cover in G.
 
 \subsection{Clique}
 Ένα clique ενός μη κατευθυντικού γράφου $G=(V,E)$ είναι ένα υποσύνολο των ακμών $C \subseteq V$ τέτοιο ώστε όλοι οι κόμβοι του να είναι γειτονικοί ανά δύο.\\
-\\
-
 Δεδομένου ενός μη κατευθυντικού γράφου $G=(V,E)$ ορίζουμε το συμπλήρωμα του ως $\overline{G} = (V, \overline{E})$ όπου $\overline{E} = \{(u,v):u,v \in{V}, u \neq v, (u,v) \notin{E}\}$, τότε αν υπάρχει ένα clique $C$ στον $\overline{G}$ το $V \setminus C$ είναι ένα vertex cover του $G$.
 
+\begin{figure}[H]
+\caption{Clique example}
+\centering
+\includegraphics[width=0.4\textwidth]{Figures/VertexClique.png}\centering
+\end{figure}
+
 \subsection{Independent set}
+Το independent set ενός γράφου είναι ένα σύνολο των κόμβων του οι οποίοι δεν είναι γειτονικοί ανά δύο. Το πρόβλημα εύρεσης του μέγιστου independent σετ είναι ένα κλασικό NP-hard πρόβλημα βελτιστοποίησης. Το πρόβλημα αυτό σχετίζεται με το πρόβλημα vertex cover καθώς για κάθε independent set ενός γράφου το συμπλήρωμα του είναι ένα vertex cover για αυτόν τον γράφο.	
+
+\begin{figure}[H]
+\caption{Independent set example}
+\centering
+\includegraphics[width=0.3\textwidth]{Figures/indep_set.png}\centering
+\end{figure}
